@@ -18,10 +18,9 @@ python3 -m http.server 4802
 | `css/site.css` | Todo o visual |
 | `js/contato.js` | Número, e-mail e o texto da mensagem do WhatsApp: o único lugar onde isso mora |
 | `tests/` | Testes do contato: `node --test tests/*.test.mjs` |
-| `js/site.js` | Formulário, troca de público, entradas e as duas cenas de rolagem (cartas em leque e janela do elefante) |
-| `vendor/` | GSAP 3.12.5, Lenis 1.1.13 e o palco das cenas (`vendor/scenes/`), servidos localmente |
-| `img/p/` | Fotos do site, em preto e branco, já recortadas no tamanho de uso |
-| `img/` | Marca, favicon, imagem de compartilhamento e logos dos parceiros |
+| `js/site.js` | Movimento (GSAP + ScrollTrigger + Lenis), troca de público e o formulário |
+| `vendor/` | GSAP 3.12.5 e Lenis 1.1.13, servidos localmente |
+| `img/` | Fotos otimizadas, marca, favicon, imagem de compartilhamento e logos dos parceiros |
 | `assets/credits.json` | Licença e autoria das fotos de terceiros |
 | `vercel.json` | URLs limpas e cache das imagens |
 

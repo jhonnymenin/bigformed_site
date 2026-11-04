@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>BigforMed · Captação de patrocínio para sociedades médicas</title>
-  <meta name="description" content="A BigforMed capta patrocínio da indústria da saúde para sociedades médicas e cuida da presença digital e dos eventos. São Paulo.">
-  <meta name="theme-color" content="#E9F0F3">
+  <meta name="description" content="A BigforMed conecta a indústria da saúde a sociedades médicas: captação de patrocínio, presença digital, eventos e simpósios. Health innovation, de São Paulo.">
+  <meta name="theme-color" content="#03141E">
   <link rel="icon" type="image/png" href="/img/favicon.png">
   <link rel="apple-touch-icon" href="/img/favicon.png">
   <link rel="canonical" href="https://bigformed.com/">
@@ -21,9 +21,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders:wght@800&family=Public+Sans:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="preload" as="image" href="/img/p/anfiteatro-wide.jpg">
-  <link rel="stylesheet" href="/vendor/scenes/stage.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/site.css">
   <script>document.documentElement.classList.add('js')</script>
 
@@ -33,289 +31,412 @@
 </head>
 <body data-audience="sociedade">
 
+<!-- Abertura: o elefante aparece, o contador sobe e a cortina sobe -->
+<div class="loader" aria-hidden="true">
+  <div class="loader__mark"><img src="/img/elefante.png" alt="" width="569" height="600"></div>
+  <div class="loader__count"><span id="loader-num">0</span>%</div>
+</div>
+
+<div class="cursor" aria-hidden="true"><span class="cursor__dot"></span><span class="cursor__ring"><em class="cursor__label"></em></span></div>
+<div class="grain" aria-hidden="true"></div>
+
 <a class="skip" href="#conteudo">Pular para o conteúdo</a>
 
-<!-- Barra fixa: aparece quando o hero sai da tela e troca de cor com o capítulo -->
-<header class="bar" id="bar">
-  <a class="bar__brand" href="#topo" aria-label="BigforMed, voltar ao início">
-    <img class="bar__logo bar__logo--ink" src="/img/bigformed-logo.png" alt="BigforMed" width="900" height="334">
-    <img class="bar__logo bar__logo--light" src="/img/bigformed-logo-dark.png" alt="" width="900" height="334">
+<header class="nav" id="nav">
+  <a class="nav__brand" href="#topo" aria-label="BigforMed, voltar ao início">
+    <img class="nav__logo-dark" src="/img/bigformed-logo-dark.png" alt="BigforMed" width="900" height="334">
+    <img class="nav__logo-light" src="/img/bigformed-logo.png" alt="" width="900" height="334">
   </a>
-  <nav class="bar__links" id="menu" aria-label="Principal">
+  <nav class="nav__links" id="menu" aria-label="Principal">
+    <a href="#sobre">Quem somos</a>
     <a href="#solucoes">Soluções</a>
     <a href="#como-funciona">Como funciona</a>
     <a href="#resultados">Resultados</a>
-    <a href="#sobre">Quem somos</a>
+    <a href="#faq">Dúvidas</a>
+    <a class="nav__menu-cta" href="#contato">Fale com a gente</a>
   </nav>
-  <a class="btn btn--accent bar__cta" href="#contato">Fale com a gente</a>
-  <button class="bar__menu" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+  <a class="btn btn--glow nav__cta magnetic" href="#contato"><span>Fale com a gente</span></a>
+  <button class="nav__burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu"><span></span><span></span></button>
 </header>
 
 <main id="conteudo">
 
-  <!-- ================= HERO: conversa estreita, título largo ================= -->
+  <!-- ================= HERO ================= -->
   <section class="hero" id="topo" aria-labelledby="hero-title">
-    <div class="hero__talk">
-      <a class="hero__brand" href="/" aria-label="BigforMed, página inicial"><img src="/img/bigformed-logo.png" alt="BigforMed health innovation" width="900" height="334"></a>
-      <div class="hero__say">
-        <div class="switch" role="group" aria-label="Para quem é">
-          <button type="button" data-set-audience="sociedade" aria-pressed="true">Sou sociedade médica</button>
-          <button type="button" data-set-audience="industria" aria-pressed="false">Sou da indústria</button>
-        </div>
-        <p class="hero__lead">
-          <span data-for="sociedade">A BigforMed capta patrocínio da indústria da saúde para sociedades médicas, e cuida da presença digital e dos eventos.</span>
-          <span data-for="industria" hidden>A BigforMed leva a sua marca às sociedades médicas, congressos e cursos certos, com contrapartidas claras e entrega acompanhada.</span>
-        </p>
-        <a class="btn btn--ink btn--lg" href="#contato">
-          <span data-for="sociedade">Quero captar patrocínio</span>
-          <span data-for="industria" hidden>Quero patrocinar</span>
-        </a>
-      </div>
-    </div>
+    <div class="aurora" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <div class="hero__grid" aria-hidden="true"></div>
+    <div class="hero__elephant" aria-hidden="true"><div class="hero__elephant-fill"></div></div>
 
-    <div class="hero__wide">
-      <nav class="hero__links" aria-label="Seções">
-        <a href="#solucoes">Soluções</a>
-        <a href="#como-funciona">Como funciona</a>
-        <a href="#resultados">Resultados</a>
-        <a href="#contato">Contato</a>
-      </nav>
-      <h1 id="hero-title" class="hero__title lines">
-        <span data-for="sociedade"><span class="line"><span data-line style="--i:0">Medicina</span></span><span class="line"><span data-line style="--i:1">patrocinada</span></span></span>
-        <span data-for="industria" hidden><span class="line"><span data-line style="--i:0">Sua marca</span></span><span class="line"><span data-line style="--i:1">na medicina</span></span></span>
+    <div class="hero__inner">
+      <p class="tag hero__tag"><span class="pulse"></span>Health innovation · São Paulo</p>
+
+      <div class="switch" role="group" aria-label="Escolha seu perfil">
+        <span class="switch__thumb" aria-hidden="true"></span>
+        <button type="button" data-set-audience="sociedade" aria-pressed="true">Sou sociedade médica</button>
+        <button type="button" data-set-audience="industria" aria-pressed="false">Sou da indústria</button>
+      </div>
+
+      <h1 id="hero-title" class="hero__title">
+        <span class="hero__line" data-for="sociedade">Patrocínio que faz a sua sociedade <em>crescer.</em></span>
+        <span class="hero__line" data-for="industria" hidden>Sua marca onde a medicina <em>acontece.</em></span>
       </h1>
-      <figure class="hero__photo">
-        <img src="/img/p/anfiteatro-wide.jpg" srcset="/img/p/anfiteatro-wide-900.jpg 900w, /img/p/anfiteatro-wide.jpg 1800w" sizes="(max-width: 767px) 100vw, 66vw" alt="Anfiteatro de anatomia, bancos de madeira em semicírculo vistos da última fileira" width="1800" height="1000" fetchpriority="high">
-        <div class="hero__figure"><strong><span data-roll="150">150</span>+</strong><span>patrocinadores conectados a sociedades médicas</span></div>
-      </figure>
-    </div>
-  </section>
 
-  <!-- ================= PARCEIROS: a lista impressa ================= -->
-  <section class="patrons" aria-labelledby="patrons-title">
-    <div class="patrons__card" data-reveal>
-      <h2 id="patrons-title">Parceiros da BigforMed</h2>
-      <figure class="patrons__photo"><img src="/img/p/congresso.jpg" alt="Plateia de um grande congresso científico" width="1600" height="900" loading="lazy"></figure>
-      <div class="patrons__lists">
-        <div>
-          <h3>Indústria</h3>
-          <ul><li>Takeda</li><li>EMS</li><li>Ferring Pharmaceuticals</li><li>Nestlé Health Science</li><li>Celltrion</li><li>FQM</li><li>Reckitt</li></ul>
-        </div>
-        <div>
-          <h3>Sociedades e iniciativas</h3>
-          <ul><li>Sociedade de Gastroenterologia de São Paulo</li><li>Abramurgem</li><li>Associação Médica Líbano-Brasileira</li><li>Curso de Ética Médica e Judicialização da Medicina</li><li>EBSS</li></ul>
+      <div class="hero__bottom">
+        <p class="hero__lead">
+          <span data-for="sociedade">Captamos patrocínio da indústria com estratégia, dados e execução digital, e cuidamos da presença online e dos eventos da sua sociedade.</span>
+          <span data-for="industria" hidden>Conectamos sua empresa às sociedades médicas, congressos e iniciativas digitais certas, com contrapartidas claras e entrega acompanhada de perto.</span>
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn--glow btn--lg magnetic" href="#contato">
+            <span data-for="sociedade">Quero captar patrocínio</span>
+            <span data-for="industria" hidden>Quero patrocinar</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn--ghost btn--lg" href="#como-funciona">Ver como funciona</a>
         </div>
       </div>
     </div>
+
+    <ul class="hero__stats" aria-label="Alguns números">
+      <li><strong><span data-count="150">150</span>+</strong><span>patrocinadores conectados</span></li>
+      <li><strong>R$ <span data-count="1.2" data-decimals="1">1,2</span> mi</strong><span>em patrocínios captados</span></li>
+      <li><strong><span data-count="50">50</span> mil</strong><span>profissionais impactados</span></li>
+    </ul>
+    <a class="hero__scroll" href="#parceiros" aria-label="Rolar para baixo"><span></span></a>
   </section>
 
-  <!-- ================= SOLUÇÕES: quatro cartas dadas em leque (cena) ================= -->
-  <section class="scene fan" id="solucoes" data-scene="fan" data-options='{"hold": 2}' aria-labelledby="sol-title">
-    <div class="scene-stage fan__stage">
-      <div class="fan__head">
-        <h2 id="sol-title">O que a gente faz</h2>
-        <p>Quatro frentes, uma equipe só: do primeiro contato com a indústria ao relatório do evento.</p>
+  <!-- ================= PARCEIROS ================= -->
+  <section class="partners" id="parceiros" aria-labelledby="partners-title">
+    <h2 id="partners-title" class="partners__title">Sociedades e marcas que já caminham com a gente</h2>
+    <div class="marquee" data-dir="left">
+      <ul class="marquee__track">
+        <li><img src="/img/logos/takeda.png" alt="Takeda" width="476" height="160"></li>
+        <li><img src="/img/logos/sgsp.png" alt="Sociedade de Gastroenterologia de São Paulo" width="429" height="160"></li>
+        <li><img src="/img/logos/ems.png" alt="EMS" width="243" height="160"></li>
+        <li><img src="/img/logos/abramurgem.png" alt="Abramurgem" width="520" height="81"></li>
+        <li><img src="/img/logos/ferring.png" alt="Ferring Pharmaceuticals" width="344" height="160"></li>
+        <li><img src="/img/logos/nestle-health-science.png" alt="Nestlé Health Science" width="520" height="142"></li>
+      </ul>
+    </div>
+    <div class="marquee" data-dir="right">
+      <ul class="marquee__track">
+        <li><img src="/img/logos/celltrion.png" alt="Celltrion" width="520" height="134"></li>
+        <li><img src="/img/logos/amlb.png" alt="Associação Médica Líbano-Brasileira" width="182" height="160"></li>
+        <li><img src="/img/logos/reckitt.png" alt="Reckitt" width="310" height="160"></li>
+        <li><img src="/img/logos/curso-etica-medica.png" alt="Curso de Extensão em Ética Médica e Judicialização da Medicina" width="323" height="160"></li>
+        <li><img src="/img/logos/fqm.png" alt="FQM" width="253" height="160"></li>
+        <li><img src="/img/logos/ebss.png" alt="EBSS" width="391" height="160"></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= MANIFESTO ================= -->
+  <section class="manifesto" id="sobre" aria-labelledby="sobre-title">
+    <div class="container">
+      <div class="manifesto__head">
+        <p class="tag">Quem somos</p>
+        <h2 id="sobre-title" class="sr-only">Quem somos</h2>
       </div>
-      <div class="fan__table">
-        <article class="fcard fcard--cyan" data-move>
-          <h3>Captação de patrocínio</h3>
-          <div class="fcard__pic"><img src="/img/p/laboratorio.jpg" alt="Gravura de um laboratório farmacêutico" width="800" height="800" loading="lazy"></div>
-          <p>Estratégia e dados para levar a sociedade aos patrocinadores certos.</p>
+      <p class="manifesto__text" data-fill>
+        Somos a ponte entre quem faz a medicina avançar e quem investe nela. Unimos <em>estratégia,</em> dados e execução digital para que cada patrocínio vire resultado de verdade, para a sociedade e para a marca.
+      </p>
+      <ul class="values">
+        <li data-reveal>
+          <span class="values__icon" aria-hidden="true"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="11"/><path d="M11 16.5l3.5 3.5L21.5 13"/></svg></span>
+          <h3>Transparência total</h3>
+          <p>Processos claros, métricas visíveis e comunicação honesta em todas as etapas.</p>
+        </li>
+        <li data-reveal>
+          <span class="values__icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M5 24l7-8 5 5 10-12"/><path d="M20 9h7v7"/></svg></span>
+          <h3>Foco em resultados</h3>
+          <p>Cada ação é orientada por resultados mensuráveis e retorno sobre o investimento.</p>
+        </li>
+        <li data-reveal>
+          <span class="values__icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M16 27s-10-6-10-13a5.5 5.5 0 0110-3 5.5 5.5 0 0110 3c0 7-10 13-10 13z"/></svg></span>
+          <h3>Parcerias duradouras</h3>
+          <p>Relações de longo prazo, construídas com confiança e resultado.</p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= SOLUÇÕES (rolagem horizontal) ================= -->
+  <section class="services" id="solucoes" aria-labelledby="sol-title">
+    <div class="services__pin">
+      <div class="services__track">
+        <div class="services__intro">
+          <p class="tag">Soluções</p>
+          <h2 id="sol-title" data-split>Da captação ao palco, <em>tudo</em> com a gente.</h2>
+          <p>Quatro frentes que se conectam. Uma equipe só, do primeiro contato com a indústria ao relatório final do evento.</p>
+          <span class="services__hint" aria-hidden="true">Role para explorar <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+
+        <article class="card">
+          <div class="card__media card__media--photo"><img src="/img/laboratorio-960.jpg" alt="Gravura antiga de um laboratório farmacêutico" width="960" height="730" loading="lazy"></div>
+          <div class="card__body">
+            <span class="card__num">01</span>
+            <h3>Captação de patrocínios</h3>
+            <p>Estratégias que conectam a sociedade aos patrocinadores ideais, com base em dados e análise de mercado.</p>
+            <ul class="pills"><li>Book de captação</li><li>Cotas e contrapartidas</li><li>Prospecção da indústria</li></ul>
+          </div>
         </article>
-        <article class="fcard fcard--white" data-move>
-          <h3>Presença digital</h3>
-          <div class="fcard__pic fcard__pic--ui" data-ui aria-hidden="true">
-            <div class="ui-site">
-              <div class="ui-site__top"><b>Sua sociedade</b><i>Congresso 2026</i></div>
-              <div class="ui-site__hero"><strong>Congresso anual</strong><span>Inscrições abertas</span></div>
-              <div class="ui-site__row"><span>Programa</span><span>Patrocinadores</span><span>Cursos</span></div>
+
+        <article class="card">
+          <div class="card__media card__media--ui" aria-hidden="true">
+            <div class="mock">
+              <div class="mock__bar"><i></i><i></i><i></i><span>suasociedade.org.br</span></div>
+              <div class="mock__hero"><b></b><b></b><span class="mock__btn"></span></div>
+              <div class="mock__row"><span></span><span></span><span></span></div>
+              <div class="mock__chart"><i style="--h:38%"></i><i style="--h:52%"></i><i style="--h:46%"></i><i style="--h:68%"></i><i style="--h:61%"></i><i style="--h:84%"></i><i style="--h:92%"></i></div>
             </div>
           </div>
-          <p>Sites, portais, identidade visual e campanhas que geram engajamento.</p>
-        </article>
-        <article class="fcard fcard--petrol" data-move>
-          <h3>Eventos e simpósios</h3>
-          <div class="fcard__pic"><img src="/img/p/congresso-800.jpg" alt="Plateia lotada diante do palco de um congresso" width="800" height="450" loading="lazy"></div>
-          <p>Planejamento, palestrantes, ativações de marca e pós-evento.</p>
-        </article>
-        <article class="fcard fcard--paper" data-move>
-          <h3>Sob demanda</h3>
-          <div class="fcard__pic fcard__pic--ui" data-ui aria-hidden="true">
-            <div class="ui-course">
-              <div class="ui-course__video"><span class="ui-course__play"></span></div>
-              <div class="ui-course__meta"><strong>Aula 3 de 8</strong><span>Quem assistiu e até onde</span></div>
-              <div class="ui-course__bar"><i></i></div>
-            </div>
+          <div class="card__body">
+            <span class="card__num">02</span>
+            <h3>Presença digital</h3>
+            <p>Conteúdo, sites, portais, identidade visual e campanhas digitais que geram engajamento de verdade.</p>
+            <ul class="pills"><li>Sites e portais</li><li>Identidade visual</li><li>Campanhas digitais</li></ul>
           </div>
-          <p>Cursos hospedados, books de captação e disparos de marketing com controle de audiência.</p>
+        </article>
+
+        <article class="card">
+          <div class="card__media card__media--photo"><img src="/img/congresso-960.jpg" alt="Plateia lotada em um congresso científico" width="960" height="640" loading="lazy"></div>
+          <div class="card__body">
+            <span class="card__num">03</span>
+            <h3>Eventos e simpósios</h3>
+            <p>Planejamento completo, palestrantes, ativações de marca e pós-evento, com monitoramento de performance.</p>
+            <ul class="pills"><li>Palestrantes</li><li>Ativações de marca</li><li>Pós-evento</li></ul>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card__media card__media--photo"><img src="/img/anfiteatro-960.jpg" alt="Anfiteatro de anatomia com bancos de madeira em semicírculo" width="960" height="720" loading="lazy"></div>
+          <div class="card__body">
+            <span class="card__num">04</span>
+            <h3>Serviços sob demanda</h3>
+            <p>Sites, hospedagem de cursos, books de captação e disparos de marketing, com controle de quem assiste e acompanha.</p>
+            <ul class="pills"><li>Cursos e webinários</li><li>Hospedagem</li><li>Disparos de marketing</li></ul>
+          </div>
         </article>
       </div>
     </div>
+    <div class="services__progress" aria-hidden="true"><span></span></div>
   </section>
 
-  <!-- ================= COMO FUNCIONA: linhas em escada ================= -->
-  <section class="steps" id="como-funciona" aria-labelledby="how-title">
-    <ol class="steps__list">
-      <li class="steps__item">
-        <h2 id="how-title" class="steps__line">Primeiro, a gente escuta.</h2>
-        <p>Diagnóstico da sociedade: público, eventos, cursos, canais e tudo o que tem valor para um patrocinador.</p>
-      </li>
-      <li class="steps__item">
-        <h3 class="steps__line">Depois, montamos o book.</h3>
-        <p>Cotas, contrapartidas e números que a indústria entende e aprova.</p>
-      </li>
-      <li class="steps__item">
-        <h3 class="steps__line">Então, levamos à indústria.</h3>
-        <p>Apresentamos às empresas certas, negociamos e fechamos o patrocínio.</p>
-      </li>
-      <li class="steps__item">
-        <h3 class="steps__line steps__line--accent">No fim, prestamos contas.</h3>
-        <p>Implementação em 24 horas e relatório de entrega com métricas claras.</p>
-      </li>
-    </ol>
-  </section>
-
-  <!-- ================= RESULTADOS: placas em degrau ================= -->
-  <section class="figures" id="resultados" aria-labelledby="fig-title">
-    <div class="figures__grid">
-      <div class="ftile ftile--tall">
-        <p class="ftile__num"><span data-roll="300">300</span>%</p>
-        <p class="ftile__cap">de crescimento médio na captação das sociedades atendidas</p>
+  <!-- ================= COMO FUNCIONA ================= -->
+  <section class="process" id="como-funciona" aria-labelledby="proc-title">
+    <div class="container process__grid">
+      <div class="process__head">
+        <p class="tag">Como funciona</p>
+        <h2 id="proc-title" data-split>Do primeiro café ao <em>contrato assinado.</em></h2>
+        <p>Um caminho claro, com você acompanhando cada etapa.</p>
+        <a class="btn btn--glow magnetic" href="#contato"><span>Começar agora</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
-      <h2 id="fig-title" class="figures__title">Resultados que contam</h2>
-      <div class="ftile ftile--ink">
-        <p class="ftile__num">R$&nbsp;<span data-roll="1.2" data-decimals="1">1,2</span>&nbsp;mi</p>
-        <p class="ftile__cap">em patrocínios captados</p>
-      </div>
-      <div class="ftile ftile--petrol">
-        <p class="ftile__num"><span data-roll="95">95</span>%</p>
-        <p class="ftile__cap">de satisfação dos clientes</p>
+      <div class="steps">
+        <span class="steps__line" aria-hidden="true"><i></i></span>
+        <ol>
+          <li class="step">
+            <span class="step__dot" aria-hidden="true"></span>
+            <h3>Diagnóstico</h3>
+            <p>Entendemos a sociedade a fundo: público, eventos, cursos, canais digitais e tudo o que tem valor para um patrocinador.</p>
+          </li>
+          <li class="step">
+            <span class="step__dot" aria-hidden="true"></span>
+            <h3>Book de captação</h3>
+            <p>Transformamos isso num material irresistível, com cotas, contrapartidas e números que a indústria entende e aprova.</p>
+          </li>
+          <li class="step">
+            <span class="step__dot" aria-hidden="true"></span>
+            <h3>Conexão com a indústria</h3>
+            <p>Apresentamos às empresas certas, negociamos e fechamos. Mais de 150 patrocinadores já passaram por esse caminho.</p>
+          </li>
+          <li class="step">
+            <span class="step__dot" aria-hidden="true"></span>
+            <h3>Entrega e relatório</h3>
+            <p>Executamos o combinado e prestamos contas com métricas claras, para o patrocinador querer voltar no ano seguinte.</p>
+          </li>
+        </ol>
       </div>
     </div>
   </section>
 
-  <!-- ================= CENA: o elefante abre a janela para o congresso ================= -->
-  <section class="scene window" data-scene="elephant-window" data-options='{"hold": 1.6}' aria-labelledby="win-title">
-    <div class="scene-stage window__stage">
-      <h2 id="win-title" class="window__title" data-move>Elefante não esquece detalhe</h2>
-      <div class="window__pic" data-move>
-        <img src="/img/p/congresso.jpg" alt="Plateia lotada em um grande congresso científico" width="1600" height="900" loading="lazy">
+  <!-- ================= RESULTADOS ================= -->
+  <section class="numbers" id="resultados" aria-labelledby="num-title">
+    <div class="container">
+      <div class="numbers__head">
+        <p class="tag">Resultados</p>
+        <h2 id="num-title" data-split>Números que falam <em>mais alto.</em></h2>
       </div>
-      <p class="window__cap" data-move>Eventos e simpósios do credenciamento ao pós-evento, com cada ativação de marca pensada para o público médico lembrar de quem estava lá.</p>
-    </div>
-  </section>
-
-  <!-- ================= DEPOIMENTOS: tiras de papel ================= -->
-  <section class="slips" aria-labelledby="slips-title">
-    <h2 id="slips-title">Quem viveu, conta</h2>
-    <div class="slips__row">
-      <figure class="slip slip--a">
-        <blockquote><p>A BFM transformou nossa captação de patrocínios. Resultado: 200% de aumento em 6 meses.</p></blockquote>
-        <figcaption><strong>Dr. Carlos Mendes</strong><span>Presidente, Sociedade de Cardiologia SP</span></figcaption>
-      </figure>
-      <figure class="slip slip--b">
-        <blockquote><p>Profissionalismo e resultados excepcionais. Nossa presença digital nunca foi tão forte.</p></blockquote>
-        <figcaption><strong>Dra. Ana Silva</strong><span>Diretora, Associação de Gastroenterologia</span></figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <!-- ================= QUEM SOMOS: foto larga, placa de cor, fatos ================= -->
-  <section class="about" id="sobre" aria-labelledby="about-title">
-    <h2 id="about-title">Quem somos</h2>
-    <p class="about__lead">Somos a ponte entre quem faz a medicina avançar e quem investe nela. Transparência total, foco em resultado e parcerias que duram.</p>
-    <div class="about__tiles">
-      <figure class="about__photo">
-        <img src="/img/p/paulista.jpg" srcset="/img/p/paulista-800.jpg 800w, /img/p/paulista.jpg 1600w" sizes="(max-width: 767px) 100vw, 66vw" alt="Vista aérea da Avenida Paulista, em São Paulo" width="1600" height="1000" loading="lazy">
-        <p class="about__note">De São Paulo para sociedades de todo o país. Processos claros, métricas visíveis e comunicação honesta em cada etapa.</p>
-      </figure>
-      <div class="about__side">
-        <div class="about__mark">
-          <svg viewBox="0 0 569 600" role="img" aria-label="O elefante da BigforMed">
-            <image href="/img/elefante-branco.png" width="569" height="600"/>
+      <div class="bento">
+        <div class="tile tile--hero" data-reveal>
+          <p class="tile__num"><span data-count="300">300</span>%</p>
+          <p class="tile__label">de crescimento médio na captação das sociedades atendidas</p>
+          <svg class="tile__chart" viewBox="0 0 400 140" preserveAspectRatio="none" aria-hidden="true">
+            <defs><linearGradient id="g-area" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#4DBEEE" stop-opacity=".45"/><stop offset="1" stop-color="#4DBEEE" stop-opacity="0"/></linearGradient></defs>
+            <path class="tile__area" d="M0 128 C60 124 90 112 140 104 S220 84 260 66 S340 26 400 10 L400 140 L0 140Z" fill="url(#g-area)"/>
+            <path class="tile__line" d="M0 128 C60 124 90 112 140 104 S220 84 260 66 S340 26 400 10" fill="none" pathLength="1"/>
           </svg>
         </div>
-        <ul class="about__facts">
-          <li><strong><span data-roll="10">10</span>+</strong><span>sociedades médicas atendidas</span></li>
-          <li><strong><span data-roll="100">100</span>+</strong><span>eventos realizados</span></li>
-          <li><strong><span data-roll="50">50</span> mil</strong><span>profissionais de saúde impactados</span></li>
-          <li><strong>24 h</strong><span>para implementar o combinado</span></li>
+        <div class="tile" data-reveal><p class="tile__num"><span data-count="150">150</span>+</p><p class="tile__label">patrocinadores conectados com sucesso</p></div>
+        <div class="tile" data-reveal><p class="tile__num">R$ <span data-count="1.2" data-decimals="1">1,2</span> mi</p><p class="tile__label">em patrocínios captados</p></div>
+        <div class="tile tile--accent" data-reveal><p class="tile__num"><span data-count="95">95</span>%</p><p class="tile__label">de satisfação dos clientes</p></div>
+        <div class="tile" data-reveal><p class="tile__num"><span data-count="100">100</span>+</p><p class="tile__label">eventos realizados</p></div>
+        <div class="tile" data-reveal><p class="tile__num"><span data-count="50">50</span> mil</p><p class="tile__label">profissionais de saúde impactados</p></div>
+        <div class="tile tile--wide" data-reveal><p class="tile__num"><span data-count="10">10</span>+</p><p class="tile__label">sociedades médicas, em diferentes especialidades</p></div>
+        <div class="tile" data-reveal><p class="tile__num"><span data-count="24">24</span>h</p><p class="tile__label">de tempo de implementação</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAIXA: o elefante nunca esquece ================= -->
+  <section class="band" aria-labelledby="band-title">
+    <div class="band__frame">
+      <img class="band__img" src="/img/congresso-1920.jpg" srcset="/img/congresso-960.jpg 960w, /img/congresso-1920.jpg 1920w" sizes="100vw" alt="Plateia lotada em um grande congresso" width="1920" height="1280" loading="lazy">
+      <div class="band__shade" aria-hidden="true"></div>
+      <div class="band__copy">
+        <h2 id="band-title" data-split>Como todo elefante, a gente <em>não esquece</em> nenhum detalhe.</h2>
+        <p>Do credenciamento ao último slide, cada ativação de marca é pensada para o público médico lembrar de quem estava lá.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= DEPOIMENTOS ================= -->
+  <section class="quotes" aria-labelledby="quotes-title">
+    <div class="container">
+      <div class="quotes__head">
+        <p class="tag">Depoimentos</p>
+        <h2 id="quotes-title" data-split>Quem vive, <em>recomenda.</em></h2>
+      </div>
+      <div class="quotes__stage" aria-live="polite">
+        <figure class="quote is-active">
+          <span class="quote__mark" aria-hidden="true">“</span>
+          <blockquote><p>A BFM transformou nossa captação de patrocínios. Resultado: 200% de aumento em 6 meses.</p></blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">CM</span><span><strong>Dr. Carlos Mendes</strong>Presidente, Sociedade de Cardiologia SP</span></figcaption>
+        </figure>
+        <figure class="quote">
+          <span class="quote__mark" aria-hidden="true">“</span>
+          <blockquote><p>Profissionalismo e resultados excepcionais. Nossa presença digital nunca foi tão forte.</p></blockquote>
+          <figcaption><span class="avatar" aria-hidden="true">AS</span><span><strong>Dra. Ana Silva</strong>Diretora, Associação de Gastroenterologia</span></figcaption>
+        </figure>
+      </div>
+      <div class="quotes__nav">
+        <button type="button" class="round magnetic" data-quote="prev" aria-label="Depoimento anterior"><svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
+        <span class="quotes__count"><span id="q-now">1</span> / 2</span>
+        <button type="button" class="round magnetic" data-quote="next" aria-label="Próximo depoimento"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="faq" id="faq" aria-labelledby="faq-title">
+    <div class="container faq__grid">
+      <div class="faq__head">
+        <p class="tag">Dúvidas</p>
+        <h2 id="faq-title" data-split>Perguntas <em>frequentes.</em></h2>
+        <p>Não achou o que procurava? <a href="#contato">Chama a gente.</a></p>
+      </div>
+      <div class="faq__list">
+        <details class="qa"><summary>Quem a BigforMed atende?</summary><div class="qa__body"><p>Sociedades médicas, associações e iniciativas de educação médica que querem captar patrocínio, e empresas da indústria da saúde que querem patrocinar com estratégia.</p></div></details>
+        <details class="qa"><summary>A sociedade precisa ter um congresso para captar?</summary><div class="qa__body"><p>Não. Cursos, webinários, portais e campanhas digitais também têm valor para o patrocinador. O diagnóstico mostra o que já existe e o que vale a pena criar.</p></div></details>
+        <details class="qa"><summary>O que é o book de captação?</summary><div class="qa__body"><p>É o material que apresenta a sociedade à indústria: público, alcance, eventos, cotas e contrapartidas, com números claros para quem decide o investimento.</p></div></details>
+        <details class="qa"><summary>Vocês organizam o evento também?</summary><div class="qa__body"><p>Sim. Planejamento, palestrantes, ativações de marca e pós-evento, ou só a parte de que a sociedade precisar.</p></div></details>
+        <details class="qa"><summary>Como o patrocinador acompanha a entrega?</summary><div class="qa__body"><p>Com métricas visíveis e relatório das contrapartidas e dos resultados depois de cada ação.</p></div></details>
+        <details class="qa"><summary>Dá para contratar só o site ou a presença digital?</summary><div class="qa__body"><p>Dá. Também atendemos sob demanda: sites, portais, hospedagem de cursos, identidade visual e disparos de marketing.</p></div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTATO ================= -->
+  <section class="contact" id="contato" aria-labelledby="contact-title">
+    <div class="aurora aurora--soft" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="container contact__grid">
+      <div class="contact__intro">
+        <p class="tag"><span class="pulse"></span>Respondemos em até 1 dia útil</p>
+        <h2 id="contact-title" data-split>Vamos fazer algo <em>BIG</em> juntos?</h2>
+        <p class="contact__lead">Conte o que a sua sociedade ou empresa precisa. A mensagem sai pronta no WhatsApp.</p>
+        <ul class="contact__direct">
+          <li><a href="https://wa.me/5511992858914" target="_blank" rel="noopener"><span class="contact__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20l1.3-3.9A8 8 0 1112 20a8 8 0 01-3.9-1z"/></svg></span>(11) 99285-8914</a></li>
+          <li><a href="mailto:contato@bigformed.com.br"><span class="contact__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>contato@bigformed.com.br</a></li>
+          <li><span class="contact__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0114 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>São Paulo, SP</li>
         </ul>
       </div>
-    </div>
-  </section>
 
-  <!-- ================= DÚVIDAS: sanfona de placas ================= -->
-  <section class="faq" id="faq" aria-labelledby="faq-title">
-    <h2 id="faq-title" class="faq__title">Perguntas frequentes</h2>
-    <div class="faq__list">
-      <details class="qa" name="faq"><summary>Quem a BigforMed atende?<span class="qa__sign" aria-hidden="true"></span></summary><p>Sociedades médicas, associações e iniciativas de educação médica que querem captar patrocínio, e empresas da indústria da saúde que querem patrocinar com estratégia.</p></details>
-      <details class="qa" name="faq"><summary>Preciso ter um congresso para captar?<span class="qa__sign" aria-hidden="true"></span></summary><p>Não. Cursos, webinários, portais e campanhas digitais também têm valor para o patrocinador. O diagnóstico mostra o que já existe e o que vale a pena criar.</p></details>
-      <details class="qa" name="faq"><summary>O que é o book de captação?<span class="qa__sign" aria-hidden="true"></span></summary><p>É o material que apresenta a sociedade à indústria: público, alcance, eventos, cotas e contrapartidas, com números claros para quem decide o investimento.</p></details>
-      <details class="qa" name="faq"><summary>Vocês organizam o evento também?<span class="qa__sign" aria-hidden="true"></span></summary><p>Sim. Planejamento, palestrantes, ativações de marca e pós-evento, ou só a parte de que a sociedade precisar.</p></details>
-      <details class="qa" name="faq"><summary>Como o patrocinador acompanha a entrega?<span class="qa__sign" aria-hidden="true"></span></summary><p>Com métricas visíveis e relatório das contrapartidas e dos resultados depois de cada ação.</p></details>
-      <details class="qa" name="faq"><summary>Dá para contratar só o site?<span class="qa__sign" aria-hidden="true"></span></summary><p>Dá. Também atendemos sob demanda: sites, portais, hospedagem de cursos, identidade visual e disparos de marketing.</p></details>
-      <details class="qa" name="faq"><summary>Em quanto tempo vocês respondem?<span class="qa__sign" aria-hidden="true"></span></summary><p>Em até um dia útil, pelo WhatsApp ou por e-mail, já com os próximos passos.</p></details>
-    </div>
-  </section>
-
-  <!-- ================= CONTATO: faixa de fotos, barra de três células ================= -->
-  <section class="contact" id="contato" aria-labelledby="contact-title">
-    <div class="strip" aria-hidden="true">
-      <div class="strip__track">
-        <img src="/img/p/tira-01.jpg" alt="" width="225" height="300" decoding="async"><img src="/img/p/tira-02.jpg" alt="" width="300" height="300" decoding="async"><img src="/img/p/tira-03.jpg" alt="" width="450" height="300" decoding="async"><img src="/img/p/tira-04.jpg" alt="" width="225" height="300" decoding="async"><img src="/img/p/tira-05.jpg" alt="" width="300" height="300" decoding="async"><img src="/img/p/tira-06.jpg" alt="" width="450" height="300" decoding="async"><img src="/img/p/tira-07.jpg" alt="" width="225" height="300" decoding="async"><img src="/img/p/tira-08.jpg" alt="" width="300" height="300" decoding="async"><img src="/img/p/tira-09.jpg" alt="" width="450" height="300" decoding="async"><img src="/img/p/tira-10.jpg" alt="" width="225" height="300" decoding="async"><img src="/img/p/tira-11.jpg" alt="" width="300" height="300" decoding="async"><img src="/img/p/tira-12.jpg" alt="" width="450" height="300" decoding="async">
-      </div>
-    </div>
-    <div class="contact__body">
-      <h2 id="contact-title">Vamos conversar</h2>
-      <form class="cbar" id="composer" action="https://wa.me/5511992858914" method="get" target="_blank" novalidate>
-        <label class="cbar__cell">
-          <span class="sr-only">Seu nome</span>
-          <input id="f-nome" name="nome" autocomplete="name" placeholder="Seu nome" required aria-describedby="composer-note">
-        </label>
-        <label class="cbar__cell">
-          <span class="sr-only">Sociedade ou empresa</span>
-          <input id="f-org" name="org" autocomplete="organization" placeholder="Sociedade ou empresa">
-        </label>
-        <input type="hidden" name="text" id="f-text" value="Olá, BigforMed! Quero conversar sobre captação de patrocínio.">
-        <button class="cbar__send" type="submit">Enviar no WhatsApp</button>
+      <form class="composer" id="composer" action="https://wa.me/5511992858914" method="get" target="_blank" novalidate>
+        <div class="field">
+          <input id="f-nome" name="nome" autocomplete="name" placeholder=" " required>
+          <label for="f-nome">Seu nome</label>
+        </div>
+        <div class="field">
+          <input id="f-org" name="org" autocomplete="organization" placeholder=" ">
+          <label for="f-org">Sociedade ou empresa</label>
+        </div>
+        <fieldset class="group">
+          <legend>Você é</legend>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="perfil" value="sociedade" checked><span>Sociedade médica</span></label>
+            <label class="chip"><input type="radio" name="perfil" value="industria"><span>Indústria</span></label>
+            <label class="chip"><input type="radio" name="perfil" value="outro"><span>Outro</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="group">
+          <legend>Quero conversar sobre</legend>
+          <div class="chips">
+            <label class="chip"><input type="checkbox" name="assunto" value="Captação de patrocínios" checked><span>Captação de patrocínios</span></label>
+            <label class="chip"><input type="checkbox" name="assunto" value="Presença digital"><span>Presença digital</span></label>
+            <label class="chip"><input type="checkbox" name="assunto" value="Eventos e simpósios"><span>Eventos e simpósios</span></label>
+            <label class="chip"><input type="checkbox" name="assunto" value="Identidade visual"><span>Identidade visual</span></label>
+            <label class="chip"><input type="checkbox" name="assunto" value="Consultoria estratégica"><span>Consultoria estratégica</span></label>
+          </div>
+        </fieldset>
+        <div class="field">
+          <textarea id="f-msg" name="detalhe" rows="2" placeholder=" "></textarea>
+          <label for="f-msg">Algum detalhe? (opcional)</label>
+        </div>
+        <div class="bubble" aria-live="polite">
+          <span class="bubble__who">Prévia da sua mensagem</span>
+          <p id="preview">Olá, BigforMed! Quero conversar sobre captação de patrocínios.</p>
+        </div>
+        <input type="hidden" name="text" id="f-text" value="Olá, BigforMed! Quero conversar sobre captação de patrocínios.">
+        <div class="composer__actions">
+          <button class="btn btn--glow btn--lg magnetic" type="submit"><span>Enviar pelo WhatsApp</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+          <a class="composer__mail" id="mail-link" href="mailto:contato@bigformed.com.br">ou enviar por e-mail</a>
+        </div>
+        <p class="composer__error" id="composer-error" role="alert" hidden>Coloque seu nome para a gente saber com quem está falando.</p>
       </form>
-      <div class="contact__small">
-        <p id="composer-note">A mensagem abre pronta no WhatsApp: <span id="preview">Olá, BigforMed! Quero conversar sobre captação de patrocínio.</span></p>
-        <p>Prefere e-mail? Escreva para <a id="mail-link" href="mailto:contato@bigformed.com.br">contato@bigformed.com.br</a></p>
-      </div>
-      <p class="contact__error" id="composer-error" role="alert" hidden>Escreva seu nome para a gente saber com quem está falando.</p>
     </div>
   </section>
 </main>
 
-<!-- ================= RODAPÉ: foto de um lado, menu do outro ================= -->
-<footer class="foot">
-  <figure class="foot__photo"><img src="/img/p/anfiteatro-close.jpg" alt="Fileiras de bancos de madeira de um anfiteatro de anatomia" width="1200" height="1500"></figure>
-  <div class="foot__menu">
-    <img class="foot__brand" src="/img/bigformed-logo-dark.png" alt="BigforMed" width="900" height="334" loading="lazy">
-    <nav aria-label="Rodapé">
-      <ul class="foot__links">
-        <li><a href="#solucoes">Soluções</a></li>
-        <li><a href="#como-funciona">Como funciona</a></li>
-        <li><a href="#resultados">Resultados</a></li>
-        <li><a href="#sobre">Quem somos</a></li>
-        <li><a href="#faq">Perguntas</a></li>
-        <li><a href="#contato">Contato</a></li>
-      </ul>
-    </nav>
-    <div class="foot__blocks">
-      <p><a href="https://wa.me/5511992858914" target="_blank" rel="noopener">WhatsApp (11) 99285-8914</a><br><a href="mailto:contato@bigformed.com.br">contato@bigformed.com.br</a><br>São Paulo, SP</p>
-      <p><a href="/privacidade">Política de privacidade</a><br><a href="/termos">Termos de uso</a></p>
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <p class="footer__claim">Inovação e captação de patrocínio para <em>sociedades médicas.</em></p>
+      <nav class="footer__links" aria-label="Rodapé">
+        <ul>
+          <li><a href="#sobre">Quem somos</a></li>
+          <li><a href="#solucoes">Soluções</a></li>
+          <li><a href="#como-funciona">Como funciona</a></li>
+          <li><a href="#resultados">Resultados</a></li>
+        </ul>
+        <ul>
+          <li><a href="https://wa.me/5511992858914" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="mailto:contato@bigformed.com.br">E-mail</a></li>
+          <li><a href="/privacidade">Privacidade</a></li>
+          <li><a href="/termos">Termos de uso</a></li>
+        </ul>
+      </nav>
     </div>
-    <p class="foot__legal">© <span id="ano">2026</span> BigforMed Prestação de Serviços Ltda., CNPJ 48.469.974/0001-45. Fotos via Wikimedia Commons: anfiteatro, Annie Caldwell; congresso, BLT 152; Avenida Paulista, ProtoplasmaKid (CC BY-SA 4.0); laboratório, Wellcome Collection (CC BY 4.0).</p>
+    <p class="footer__word" aria-hidden="true"><span>B</span><span>I</span><span>G</span><span class="lite">f</span><span class="lite">o</span><span class="lite">r</span><span>M</span><span>E</span><span>D</span></p>
+    <div class="footer__legal">
+      <p>© <span id="ano">2026</span> BigforMed Prestação de Serviços Ltda., CNPJ 48.469.974/0001-45</p>
+      <a href="#topo" class="footer__top-link">Voltar ao topo ↑</a>
+    </div>
+    <p class="footer__credits">Fotos: “2019 Nobel Conference Audience”, BLT 152; “Anatomy Lecture Theatre top row”, Annie Caldwell (CC BY-SA 4.0); “Interior of a pharmaceutical laboratory”, Wellcome Collection (CC BY 4.0). Via Wikimedia Commons.</p>
   </div>
 </footer>
 
 <script src="/vendor/gsap.min.js" defer></script>
 <script src="/vendor/ScrollTrigger.min.js" defer></script>
 <script src="/vendor/lenis.min.js" defer></script>
-<script src="/vendor/scenes/stage.js" defer></script>
 <script type="module" src="/js/site.js"></script>
 </body>
 </html>
