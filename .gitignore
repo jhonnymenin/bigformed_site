@@ -1,0 +1,10 @@
+.DS_Store
+node_modules/
+# versão antiga do Bolt (tem .env com chaves do Supabase): fica só no computador
+legacy-bolt/
+# rascunhos e capturas do processo de design
+.taste-skill/
+v2/
+# originais das fotos baixadas; o site usa as versões otimizadas em img/
+assets/*
+!assets/credits.json
