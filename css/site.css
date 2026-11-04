@@ -128,7 +128,6 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 800; text-transform:
 }
 .hero__figure strong { font: 800 var(--step-head)/.9 var(--font-display); }
 .hero__figure > span { font-size: var(--step-small); font-weight: 600; line-height: 1.35; }
-.hero__cutout { position: absolute; right: -2vw; bottom: 3vh; width: clamp(200px, 22vw, 380px); rotate: -6deg; pointer-events: none; }
 
 /* ---------- Parceiros: o cartão impresso ---------- */
 .patrons { background: var(--petrol); padding-top: var(--gap); overflow: clip; display: flex; justify-content: center; align-items: flex-start; }
@@ -136,7 +135,9 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 800; text-transform:
 .patrons__card h2 { font-size: var(--step-lead); line-height: 1; }
 .patrons__photo { margin: 32px 0 36px; aspect-ratio: 16 / 9; overflow: clip; }
 .patrons__photo img { width: 100%; height: 100%; object-fit: cover; }
-.patrons__names { font-size: var(--step-lead); line-height: 1.7; letter-spacing: -0.01em; text-wrap: balance; }
+.patrons__lists { display: grid; grid-template-columns: 1fr 1.3fr; gap: 40px; text-align: left; }
+.patrons__lists h3 { font: 800 var(--step-lead)/1.1 var(--font-display); color: var(--petrol); margin-bottom: 8px; }
+.patrons__lists li { font-size: var(--step-lead); line-height: 1.25; letter-spacing: -0.01em; padding: 6px 0; }
 
 /* ---------- Soluções: cartas em leque (cena) ---------- */
 .fan { background: var(--deep); color: var(--on-dark); }
@@ -235,7 +236,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 800; text-transform:
 .slip blockquote p { font-size: 1.375rem; line-height: 1.3; letter-spacing: -0.01em; }
 
 /* ---------- Quem somos ---------- */
-.about { background: var(--paper); padding: var(--gap) var(--m); }
+.about { background: var(--paper); padding: var(--gap) var(--m) clamp(96px, 9vw, 140px); }
 .about h2 { font-size: var(--step-head); }
 .about__lead { margin-top: 24px; max-width: 44ch; font-size: var(--step-lead); line-height: 1.3; }
 .about__tiles { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; margin-top: 72px; align-items: start; }
@@ -251,7 +252,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 800; text-transform:
 .about__facts span:not([data-roll]) { font-size: var(--step-small); color: var(--ink-soft); }
 
 /* ---------- Perguntas ---------- */
-.faq { background: var(--white); padding: var(--gap) var(--m); display: grid; grid-template-columns: repeat(12, 1fr); column-gap: 24px; align-items: start; }
+.faq { background: var(--white); padding: clamp(96px, 9vw, 140px) var(--m); display: grid; grid-template-columns: repeat(12, 1fr); column-gap: 24px; align-items: start; }
 .faq__title { grid-column: 1 / 5; font-size: var(--step-head); position: sticky; top: 96px; max-width: 6em; }
 .faq__list { grid-column: 5 / 13; display: grid; gap: 8px; }
 .qa { background: var(--paper); transition: background-color 250ms; }
@@ -270,7 +271,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 800; text-transform:
 @media (hover: hover) and (pointer: fine) { .qa:not([open]) summary:hover { background: #DCE7EC; } }
 
 /* ---------- Contato ---------- */
-.contact { background: var(--petrol); color: var(--white); min-height: 80svh; padding: 48px 0 var(--gap); }
+.contact { background: var(--petrol); color: var(--white); min-height: 80svh; padding: 48px 0 clamp(96px, 9vw, 140px); }
 .strip { overflow: clip; }
 .strip__track { display: flex; gap: 8px; width: max-content; }
 .strip__track img { height: 150px; width: auto; }
@@ -314,7 +315,6 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 800; text-transform:
 @media (prefers-reduced-motion: no-preference) {
   .js .hero__title [data-line] { transform: translateY(105%); animation: line-up 900ms var(--ease-out) forwards; animation-delay: calc(var(--i) * 110ms + 120ms); }
   .js .hero__say, .js .hero__photo { opacity: 0; transform: translateY(24px); animation: rise 800ms var(--ease-out) 380ms forwards; }
-  .js .hero__cutout { opacity: 0; transform: translateY(40px) rotate(6deg); animation: rise 1100ms var(--ease-out) 520ms forwards; }
   .js [data-reveal] { opacity: 0; transform: translateY(28px); transition: opacity 700ms var(--ease-out), transform 900ms var(--ease-out); transition-delay: var(--d, 0ms); }
   .js [data-reveal].is-in { opacity: 1; transform: none; }
   .js .patrons__card[data-reveal] { transform: translateY(120px); }
@@ -360,13 +360,13 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 800; text-transform:
   .hero__wide { display: contents; }
   .hero__photo { order: 2; height: auto; aspect-ratio: 4 / 3; padding-top: 0; margin-top: 56px; }
   .hero__figure { width: 60%; top: -40px; left: 20px; padding: 14px 16px; }
-  .hero__cutout { order: 3; position: relative; right: auto; bottom: auto; width: 54vw; margin: -60px 20px 24px auto; }
   .switch { align-self: stretch; }
   .switch button { flex: 1; }
 
-  .patrons { height: auto; max-height: 860px; padding-top: 80px; }
-  .patrons__card { width: 92vw; padding: 28px; rotate: -1deg; aspect-ratio: auto; min-height: 820px; }
-  .patrons__names { font-size: 1.0625rem; }
+  .patrons { padding-top: 80px; }
+  .patrons__card { width: 92vw; padding: 28px 28px 220px; rotate: -1deg; }
+  .patrons__lists { grid-template-columns: 1fr; gap: 28px; }
+  .patrons__lists li { font-size: 1.125rem; }
 
 
   .steps { padding-block: 96px; }
