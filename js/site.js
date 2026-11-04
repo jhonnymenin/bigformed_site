@@ -1,10 +1,10 @@
 // BigforMed — comportamento e movimento.
 // Tudo funciona sem script: o conteúdo está no HTML e as cenas têm composição final.
 // O script só acrescenta chegada, as duas cenas de rolagem e o formulário que monta a mensagem.
+import { mensagem, linkWhatsApp, linkEmail, WHATSAPP } from './contato.js';
+
 (() => {
-  const WA = '5511992858914';
-  const EMAIL = 'contato@bigformed.com.br';
-  const $ = (s, c = document) => c.querySelector(s);
+  const $ =(s, c = document) => c.querySelector(s);
   const $$ = (s, c = document) => [...c.querySelectorAll(s)];
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -29,18 +29,14 @@
   const nameIn = $('#f-nome');
   const orgIn = $('#f-org');
   const err = $('#composer-error');
+  // os links fixos do HTML existem para quem está sem script; com script, o número vem de contato.js
+  $$('a[href^="https://wa.me/"]').forEach((a) => { a.href = `https://wa.me/${WHATSAPP}`; });
   function compose() {
     const nome = nameIn.value.trim();
-    const org = orgIn.value.trim();
-    let txt = 'Olá, BigforMed!';
-    if (nome) txt += ` Sou ${nome}${org ? `, da ${org}` : ''}.`;
-    else if (org) txt += ` Falo pela ${org}.`;
-    txt += audience === 'industria'
-      ? ' Quero patrocinar sociedades médicas.'
-      : ' Quero conversar sobre captação de patrocínio.';
+    const txt = mensagem({ nome, org: orgIn.value, publico: audience });
     $('#preview').textContent = txt;
     $('#f-text').value = txt;
-    $('#mail-link').href = `mailto:${EMAIL}?subject=${encodeURIComponent('Contato pelo site')}&body=${encodeURIComponent(txt)}`;
+    $('#mail-link').href = linkEmail(txt);
     return { txt, nome };
   }
   form.addEventListener('input', () => {
@@ -51,21 +47,28 @@
     e.preventDefault();
     const { txt, nome } = compose();
     if (!nome) { nameIn.setAttribute('aria-invalid', 'true'); err.hidden = false; nameIn.focus(); return; }
-    window.open(`https://wa.me/${WA}?text=${encodeURIComponent(txt)}`, '_blank', 'noopener');
+    window.open(linkWhatsApp(txt), '_blank', 'noopener');
   });
   compose();
 
   // ---------- Barra fixa: aparece depois do hero e pega a cor do capítulo ----------
   const bar = $('#bar');
-  const grounds = [
-    ['.hero', 'paper'], ['.patrons', 'petrol'], ['.fan', 'deep'], ['.steps', 'paper'], ['.figures', 'white'],
-    ['.window', 'ink'], ['.slips', 'cyan'], ['.about', 'paper'], ['.faq', 'white'], ['.contact', 'petrol'], ['.foot', 'deep'],
-  ].map(([s, g]) => [$(s), g]).filter(([el]) => el);
+  // A barra lê a cor que a seção de baixo dela já tem no CSS, em vez de manter uma tabela própria:
+  // mudou a cor de uma seção, a barra acompanha sozinha.
+  const chapters = $$('main > section, body > footer');
+  const accent = getComputedStyle(document.documentElement).getPropertyValue('--cyan').trim().toLowerCase();
+  const toHex = (rgb) => '#' + (rgb.match(/\d+/g) || []).slice(0, 3).map((n) => (+n).toString(16).padStart(2, '0')).join('');
+  const isDark = (rgb) => { const [r, g, b] = (rgb.match(/\d+/g) || [255, 255, 255]).map(Number); return 0.2126 * r + 0.7152 * g + 0.0722 * b < 140; };
   const hero = $('.hero');
   function onScroll() {
     bar.classList.toggle('is-shown', hero.getBoundingClientRect().bottom < 64 || bar.classList.contains('is-open'));
-    const hit = grounds.find(([el]) => { const r = el.getBoundingClientRect(); return r.top <= 32 && r.bottom > 32; });
-    if (hit) bar.dataset.ground = hit[1];
+    const under = chapters.find((el) => { const r = el.getBoundingClientRect(); return r.top <= 32 && r.bottom > 32; });
+    if (under) {
+      const bg = getComputedStyle(under).backgroundColor;
+      bar.style.backgroundColor = bg;
+      bar.dataset.tone = isDark(bg) ? 'dark' : 'light';
+      bar.toggleAttribute('data-on-accent', toHex(bg) === accent);
+    }
     $$('.bar__links a').forEach((a) => {
       const sec = $(a.getAttribute('href'));
       if (!sec) return;

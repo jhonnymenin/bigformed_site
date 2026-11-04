@@ -87,14 +87,11 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 800; text-transform:
 .bar__links a:hover, .bar__links a.is-active, .hero__links a:hover { text-decoration-color: currentColor; }
 .bar__cta { min-height: 44px; padding: 0 18px; font-size: var(--step-small); }
 .bar__menu { display: none; margin-left: auto; min-height: 44px; padding: 0 4px; border: 0; background: none; cursor: pointer; font-weight: 600; }
-/* a barra muda de tinta com o capítulo */
-.bar[data-ground="deep"], .bar[data-ground="ink"] { background: var(--deep); color: var(--white); }
-.bar[data-ground="petrol"] { background: var(--petrol); color: var(--white); }
-.bar[data-ground="cyan"] { background: var(--cyan); color: var(--ink); }
-.bar[data-ground="white"] { background: var(--white); }
-.bar[data-ground="deep"] .bar__logo--ink, .bar[data-ground="ink"] .bar__logo--ink, .bar[data-ground="petrol"] .bar__logo--ink { opacity: 0; }
-.bar[data-ground="deep"] .bar__logo--light, .bar[data-ground="ink"] .bar__logo--light, .bar[data-ground="petrol"] .bar__logo--light { opacity: 1; }
-.bar[data-ground="petrol"] .bar__cta { background: var(--white); }
+/* a barra pega a cor da seção de baixo (o script copia o fundo); aqui só a tinta muda com o tom */
+.bar[data-tone="dark"] { color: var(--white); }
+.bar[data-tone="dark"] .bar__logo--ink { opacity: 0; }
+.bar[data-tone="dark"] .bar__logo--light { opacity: 1; }
+.bar[data-on-accent] .bar__cta { background: var(--white); }
 
 /* ---------- Hero ---------- */
 .hero {
